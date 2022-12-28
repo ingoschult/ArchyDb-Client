@@ -20,8 +20,7 @@ class Projekte extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
-    this.handleCancel = this.handleCancel.bind(this);
-
+    this.handleReset = this.handleReset.bind(this);
   }
 
   handleChange(event) {
@@ -30,13 +29,16 @@ class Projekte extends React.Component {
 
   handleClick(event) {
     alert("Land: '" + this.state.land + "'");
-
     event.preventDefault();
   }
 
-  handleCancel(event) {
-    //Alert("abbruch ...");
-    console.log("abbruch ...");
+  handleReset(event) {
+    this.setState({
+      land: '',
+      gemarkung: '',
+      leitung:'',
+      finder: ''
+    });
     event.preventDefault();
   }
 
@@ -60,21 +62,23 @@ class Projekte extends React.Component {
 
           <Form.Group className="mb-3">
             <Form.Label>Land</Form.Label>
-            <Form.Control type="text" placeholder="Land" value={this.state.land} onChange={this.handleChange} />
+            <Form.Control type="text" placeholder="Land" name="land" value={this.state.land} onChange={this.handleChange} />
           </Form.Group>
 
           <Form.Group className="mb-3">
             <Form.Label>Gemarkung</Form.Label>
-            <Form.Control type="text" placeholder="Gemarkung" value={this.state.gemarkung} onChange={this.handleChange} />
+            <Form.Control type="text" placeholder="Gemarkung" name="gemarkung" value={this.state.gemarkung} onChange={this.handleChange} />
           </Form.Group>
 
           <Stack direction="horizontal" gap={4}>
             <Button className="form_button" variant="primary" type="button" onClick={this.handleClick}>
               Übernehmen
             </Button>
-            <Button className="form_button" variant="secondary" type="button" onClick={this.handleCancel}>
-              Abbruch
+
+            <Button className='form_button' variant='secondary' type="button>" onClick={this.handleReset}>
+              Zurücksetzen
             </Button>
+
           </Stack>
         </Form>
       </Container >
