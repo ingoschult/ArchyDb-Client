@@ -23,10 +23,12 @@ class Projekte extends React.Component {
     this.handleReset = this.handleReset.bind(this);
   }
 
+  // Changes uebernehmen
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
 
+  // Submit durchführen
   handleClick(event) {
     alert("Land: '" + this.state.land + "'");
     event.preventDefault();
